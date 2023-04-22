@@ -15,6 +15,9 @@
 # Object id - id of the item we're accessing
 # Verb - HTTP Verb that we're working with. (GET POST PUT PATCH DELETE)
 
+# Future
+# Methods -
+# Query string -
 
 ```json
 {
