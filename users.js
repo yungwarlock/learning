@@ -20,13 +20,28 @@ router.get("/", (req, res) => {
     res.json(items);
 })
 
+const allowedLength = 3;
+const allowedLanguages = ["Python", "NodeJS", "Golang"];
+
 /**
  * Create user
  */
 router.post("/", (req, res) => {
     const id = (Math.random() * 10).toFixed(0).toString();
+
     const name = req.body.name;
     const language = req.body.language;
+
+    if(name.length < allowedLength) {
+        return res.status(400).json({ message: "The name you provided is less than 3"});
+    }
+
+    const found = allowedLanguages.find((item) => item.toLowerCase() == language.toLowerCase());
+    console.log(found);
+
+    if(!found) {
+        return res.status(400).json({ message: "The language you provided is not allowed" });
+    }
 
     const object = { id, name, language };
 
